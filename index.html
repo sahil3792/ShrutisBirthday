@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday Shruti 🎂</title>
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Fonts: Great Vibes (display/script), Caveat (handwritten notes), Poppins (headings), Quicksand (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Caveat:wght@500;700&family=Poppins:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --midnight:#170f2b;
+    --plum:#3a1f5d;
+    --plum-light:#5a3585;
+    --rose:#ff6f91;
+    --gold:#f4c95d;
+    --cream:#fdf6ec;
+    --blush:#fff2f6;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    font-family:'Quicksand', sans-serif;
+    color:var(--midnight);
+    background:var(--cream);
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3, .heading-font{ font-family:'Poppins', sans-serif; }
+  .script-font{ font-family:'Great Vibes', cursive; }
+  .hand-font{ font-family:'Caveat', cursive; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+    background:
+      radial-gradient(1.5px 1.5px at 15% 20%, rgba(255,255,255,.9) 100%, transparent),
+      radial-gradient(1.5px 1.5px at 80% 15%, rgba(255,255,255,.7) 100%, transparent),
+      radial-gradient(2px 2px at 50% 60%, rgba(255,255,255,.6) 100%, transparent),
+      radial-gradient(1.5px 1.5px at 25% 80%, rgba(255,255,255,.8) 100%, transparent),
+      radial-gradient(2px 2px at 70% 75%, rgba(255,255,255,.5) 100%, transparent),
+      radial-gradient(1.5px 1.5px at 90% 50%, rgba(255,255,255,.7) 100%, transparent),
+      radial-gradient(1.5px 1.5px at 40% 35%, rgba(255,255,255,.6) 100%, transparent),
+      linear-gradient(160deg, var(--midnight) 0%, var(--plum) 55%, #6a2c63 100%);
+  }
+
+  /* Optional real photo behind the hero text — uncomment and set a URL/path */
+  /* .hero{ background-image:linear-gradient(180deg, rgba(23,15,43,.55), rgba(58,31,93,.75)), url('YOUR-BACKGROUND-PHOTO.jpg'); background-size:cover; background-position:center; } */
+
+  .hero-content{ position:relative; z-index:3; padding:2rem 1.25rem; max-width:900px; }
+
+  .hero-eyebrow{
+    letter-spacing:.35em; text-transform:uppercase; font-size:.75rem;
+    color:var(--gold); font-weight:600; margin-bottom:1rem; display:inline-block;
+  }
+
+  .hero-title{
+    font-family:'Great Vibes', cursive; color:var(--cream);
+    font-size:clamp(3rem, 11vw, 7.5rem); line-height:1.05; margin:0 0 .5rem 0;
+    text-shadow:0 4px 30px rgba(255,111,145,.35);
+  }
+
+  .hero-sub{
+    color:var(--cream); opacity:.85; font-size:clamp(1rem, 2.4vw, 1.25rem);
+    max-width:560px; margin:0 auto; font-weight:500;
+  }
+
+  .scroll-cue{
+    position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+    z-index:3; color:var(--cream); opacity:.75; font-size:1.6rem; animation:bounce 2s infinite;
+  }
+  @keyframes bounce{ 0%,100%{transform:translate(-50%,0);} 50%{transform:translate(-50%,10px);} }
+
+  /* ---------- HEARTS SHOWER ---------- */
+  #hearts-layer{ position:fixed; inset:0; pointer-events:none; z-index:1055; overflow:hidden; }
+  .heart{
+    position:absolute; top:-10%; font-size:1.4rem; opacity:.9;
+    animation-name:fall; animation-timing-function:linear; animation-iteration-count:1;
+    will-change:transform, opacity;
+  }
+  @keyframes fall{
+    0%{ transform:translateY(0) translateX(0) rotate(0deg); opacity:0; }
+    10%{ opacity:1; }
+    100%{ transform:translateY(110vh) translateX(var(--drift,0px)) rotate(360deg); opacity:0; }
+  }
+
+  /* ---------- CONFETTI ---------- */
+  #confetti-layer{ position:fixed; inset:0; pointer-events:none; z-index:1056; overflow:hidden; }
+  .confetti-piece{
+    position:absolute; top:-5%; width:9px; height:14px; opacity:.95;
+    animation-name:confetti-fall; animation-timing-function:ease-in;
+    animation-iteration-count:1; will-change:transform, opacity;
+  }
+  @keyframes confetti-fall{
+    0%{ transform:translateY(0) translateX(0) rotate(0deg); opacity:1; }
+    100%{ transform:translateY(105vh) translateX(var(--drift,0px)) rotate(540deg); opacity:0; }
+  }
+
+  /* ---------- FLOATING UTILITY BUTTONS ---------- */
+  .floating-btn{
+    position:fixed;
+    right:20px;
+    width:52px; height:52px;
+    border-radius:50%;
+    border:2px solid var(--gold);
+    background:var(--midnight);
+    color:var(--cream);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.35rem;
+    z-index:1060;
+    box-shadow:0 8px 22px rgba(0,0,0,.35);
+    cursor:pointer;
+    transition:transform .2s ease;
+  }
+  .floating-btn:hover{ transform:scale(1.08); }
+  #musicToggle{ bottom:92px; }
+  #confettiBtn{ bottom:28px; }
+
+  /* ---------- GIFT MODAL ---------- */
+  .gift-modal .modal-content{
+    background:linear-gradient(165deg, var(--plum) 0%, var(--midnight) 100%);
+    border:2px solid var(--gold); border-radius:22px; color:var(--cream);
+    text-align:center; padding:1.5rem .5rem .5rem .5rem; box-shadow:0 20px 60px rgba(0,0,0,.5);
+  }
+  .gift-modal .modal-body{ padding:1rem 1.5rem 2rem; }
+  .gift-icon{ font-size:3rem; display:block; margin-bottom:.5rem; }
+  .gift-modal .modal-title{ font-family:'Great Vibes', cursive; font-size:2.8rem; color:var(--gold); width:100%; }
+  .gift-message{ font-size:1.05rem; line-height:1.7; color:var(--cream); opacity:.9; }
+  .btn-close-gift{
+    background:var(--rose); color:var(--midnight); border:none; font-family:'Poppins', sans-serif;
+    font-weight:700; letter-spacing:.03em; padding:.65rem 2.25rem; border-radius:50px;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .btn-close-gift:hover{ background:var(--gold); transform:translateY(-2px); color:var(--midnight); }
+
+  /* ---------- SECTION HEADERS (shared) ---------- */
+  .section-eyebrow{ text-transform:uppercase; letter-spacing:.3em; font-size:.72rem; font-weight:700; color:var(--rose); }
+  .section-title{ font-weight:700; font-size:clamp(1.8rem, 4vw, 2.6rem); color:var(--midnight); }
+  .section-lead{ color:#6a5a7a; max-width:640px; margin:.75rem auto 0; }
+
+  .reveal{ opacity:0; transform:translateY(35px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+
+  /* ---------- OUR STORY TIMELINE ---------- */
+  .story-timeline-section{ background:var(--cream); padding:5rem 0; }
+
+  .timeline{ position:relative; max-width:820px; margin:3rem auto 0; padding-left:0; }
+  .timeline::before{
+    content:''; position:absolute; left:24px; top:0; bottom:0; width:2px;
+    background:linear-gradient(var(--rose), var(--gold));
+  }
+  .timeline-item{ position:relative; padding-left:64px; margin-bottom:2.75rem; }
+  .timeline-item:last-child{ margin-bottom:0; }
+  .timeline-dot{
+    position:absolute; left:12px; top:2px; width:26px; height:26px; border-radius:50%;
+    background:var(--rose); border:4px solid var(--cream); box-shadow:0 0 0 2px var(--gold);
+    display:flex; align-items:center; justify-content:center; font-size:.85rem;
+  }
+  .timeline-year{ font-family:'Poppins',sans-serif; font-weight:700; color:var(--rose); font-size:.8rem; text-transform:uppercase; letter-spacing:.12em; }
+  .timeline-item h4{ font-family:'Poppins',sans-serif; font-weight:700; margin:.25rem 0 .4rem; color:var(--midnight); }
+  .timeline-item p{ color:#5c4a6e; margin:0; line-height:1.7; }
+
+  @media (max-width:576px){
+    .timeline::before{ left:14px; }
+    .timeline-item{ padding-left:44px; }
+    .timeline-dot{ left:2px; width:22px; height:22px; }
+  }
+
+  /* ---------- MEMORY CAROUSEL ---------- */
+  .memories-section{ background:linear-gradient(180deg, var(--midnight), var(--plum)); padding:5rem 0; color:var(--cream); }
+  .memories-section .section-title{ color:var(--cream); }
+  .memories-section .section-lead{ color:#d9cbe8; }
+
+  #memoryCarousel{ max-width:720px; margin:2.5rem auto 0; border-radius:20px; overflow:hidden; box-shadow:0 25px 60px rgba(0,0,0,.45); }
+  #memoryCarousel .carousel-item img{ height:440px; object-fit:cover; width:100%; }
+  #memoryCarousel .carousel-caption{ background:rgba(23,15,43,.55); border-radius:12px; bottom:20px; padding:.6rem 1rem; }
+  #memoryCarousel .carousel-caption p{ font-family:'Poppins', sans-serif; font-weight:600; margin:0; font-size:1rem; }
+
+  /* ---------- PHOTO WALL (SCRAPBOOK) ---------- */
+  .photowall-section{ background:var(--blush); padding:5rem 0; text-align:center; }
+  .photowall-grid{ column-count:3; column-gap:1.25rem; max-width:1100px; margin:3rem auto 0; padding:0 1rem; }
+  .photowall-grid img{
+    width:100%; display:block; margin-bottom:1.25rem; border-radius:10px;
+    box-shadow:0 12px 30px rgba(58,31,93,.25); cursor:pointer;
+    transition:transform .3s ease, box-shadow .3s ease; background:#fff; padding:8px 8px 22px;
+  }
+  .photowall-grid img:nth-child(odd){ transform:rotate(-2deg); }
+  .photowall-grid img:nth-child(even){ transform:rotate(2deg); }
+  .photowall-grid img:hover{ transform:rotate(0) scale(1.03); box-shadow:0 18px 40px rgba(58,31,93,.35); z-index:2; position:relative; }
+
+  @media (max-width:768px){ .photowall-grid{ column-count:2; } }
+  @media (max-width:480px){ .photowall-grid{ column-count:1; } }
+
+  #lightbox{
+    display:none; position:fixed; inset:0; background:rgba(23,15,43,.92); z-index:1070;
+    align-items:center; justify-content:center; padding:2rem; cursor:zoom-out;
+  }
+  #lightbox.open{ display:flex; }
+  #lightbox img{ max-width:90vw; max-height:85vh; border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,.6); }
+
+  /* ---------- STORY / ALTERNATING SECTIONS ---------- */
+  .story-block{ padding:4.5rem 0; }
+  .story-block:nth-of-type(even){ background:var(--blush); }
+  .story-img{ width:100%; border-radius:20px; box-shadow:0 20px 45px rgba(58,31,93,.25); transform:rotate(2deg); transition:transform .4s ease; }
+  .story-block:nth-of-type(even) .story-img{ transform:rotate(-2deg); }
+  .story-img:hover{ transform:rotate(0deg) scale(1.02); }
+  .story-text{ font-size:1.05rem; line-height:1.85; color:#4a3a5a; }
+
+  /* ---------- REASONS GENERATOR ---------- */
+  .reasons-section{ background:var(--midnight); color:var(--cream); text-align:center; padding:5rem 1rem; }
+  .reasons-section .section-title{ color:var(--cream); }
+  .reasons-card{
+    max-width:640px; margin:2.5rem auto 0; background:linear-gradient(165deg, var(--plum), var(--midnight));
+    border:2px solid var(--gold); border-radius:22px; padding:2.5rem 2rem; min-height:160px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  #reasonText{ font-family:'Caveat', cursive; font-size:1.9rem; line-height:1.4; color:var(--gold); margin:0; }
+  .btn-reason{
+    margin-top:1.75rem; background:var(--rose); color:var(--midnight); border:none;
+    font-family:'Poppins',sans-serif; font-weight:700; padding:.7rem 2.25rem; border-radius:50px;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .btn-reason:hover{ background:var(--gold); transform:translateY(-2px); }
+
+  /* ---------- WALL OF NOTES ---------- */
+  .notes-section{ background:var(--cream); padding:5rem 1rem; text-align:center; }
+  .notes-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:1.75rem; max-width:1000px; margin:3rem auto 0; }
+  .note-card{
+    padding:1.5rem 1.4rem; border-radius:6px; text-align:left; min-height:190px;
+    box-shadow:0 10px 25px rgba(58,31,93,.18); position:relative;
+  }
+  .note-card:nth-child(6n+1){ background:#fff3cd; transform:rotate(-2deg); }
+  .note-card:nth-child(6n+2){ background:#ffe0ec; transform:rotate(1.5deg); }
+  .note-card:nth-child(6n+3){ background:#e3f6f5; transform:rotate(-1deg); }
+  .note-card:nth-child(6n+4){ background:#f0e6ff; transform:rotate(2deg); }
+  .note-card:nth-child(6n+5){ background:#ffe9d6; transform:rotate(-1.5deg); }
+  .note-card:nth-child(6n+6){ background:#e6f2d9; transform:rotate(1deg); }
+  .note-card:hover{ transform:rotate(0) scale(1.03); transition:transform .25s ease; }
+  .note-text{ font-family:'Caveat', cursive; font-size:1.35rem; line-height:1.4; color:#3a2a4a; }
+  .note-signature{ font-family:'Caveat', cursive; font-weight:700; margin-top:.75rem; color:var(--rose); font-size:1.15rem; }
+
+  /* ---------- POEM SECTION ---------- */
+  .poem-section{ background:linear-gradient(180deg, var(--plum), var(--midnight)); padding:5rem 1rem; color:var(--cream); text-align:center; }
+  .poem-section .section-title{ color:var(--cream); }
+  .poem-box{ max-width:600px; margin:2.5rem auto 0; text-align:left; min-height:260px; }
+  .poem-line{ font-family:'Caveat', cursive; font-size:1.7rem; line-height:1.7; color:var(--cream); opacity:.95; }
+  .poem-cursor{ display:inline-block; width:2px; background:var(--gold); margin-left:2px; animation:blink 1s step-end infinite; }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  /* ---------- MAD-LIB GENERATOR ---------- */
+  .madlib-section{ background:var(--blush); padding:5rem 1rem; text-align:center; }
+  .madlib-form{ max-width:560px; margin:2.5rem auto 0; text-align:left; }
+  .madlib-form label{ font-family:'Poppins',sans-serif; font-weight:600; font-size:.85rem; color:var(--midnight); }
+  .madlib-form .form-control{ border-radius:12px; border:1px solid #d9c6e6; margin-bottom:1rem; }
+  .btn-madlib{ background:var(--midnight); color:var(--cream); border:none; font-family:'Poppins',sans-serif; font-weight:700; padding:.7rem 2rem; border-radius:50px; }
+  .btn-madlib:hover{ background:var(--plum); color:var(--cream); }
+  #madlibOutput{
+    margin-top:2rem; background:#fff; border-radius:16px; padding:1.75rem; text-align:left;
+    box-shadow:0 12px 30px rgba(58,31,93,.15); display:none; font-family:'Caveat', cursive; font-size:1.4rem; line-height:1.6; color:var(--midnight);
+  }
+
+  /* ---------- TODO JOKE WIDGET ---------- */
+  .todo-section{ background:var(--cream); padding:5rem 1rem; text-align:center; }
+  .todo-card{ max-width:520px; margin:2.5rem auto 0; background:#fff; border-radius:18px; padding:2rem; box-shadow:0 12px 30px rgba(58,31,93,.15); text-align:left; }
+  .todo-item{ display:flex; align-items:flex-start; gap:.75rem; padding:.6rem 0; border-bottom:1px dashed #e5d8ef; }
+  .todo-item:last-child{ border-bottom:none; }
+  .todo-item input{ margin-top:.3rem; width:18px; height:18px; accent-color:var(--rose); flex-shrink:0; }
+  .todo-item label{ font-weight:500; color:#4a3a5a; cursor:pointer; }
+  .todo-item input:checked + label{ text-decoration:line-through; opacity:.55; }
+  #todoNote{ margin-top:1rem; font-family:'Caveat', cursive; font-size:1.2rem; color:var(--rose); min-height:1.5rem; }
+  .btn-todo-reset{ margin-top:1rem; background:transparent; border:2px solid var(--midnight); color:var(--midnight); font-family:'Poppins',sans-serif; font-weight:700; padding:.5rem 1.5rem; border-radius:50px; }
+  .btn-todo-reset:hover{ background:var(--midnight); color:var(--cream); }
+
+  /* ---------- CERTIFICATE ---------- */
+  .certificate-section{ background:linear-gradient(180deg, var(--midnight), var(--plum)); padding:5rem 1rem; text-align:center; color:var(--cream); }
+  .certificate-section .section-title{ color:var(--cream); }
+  #certificateCanvas{ max-width:100%; height:auto; border-radius:14px; box-shadow:0 20px 55px rgba(0,0,0,.4); margin-top:2.5rem; }
+  .btn-certificate{ margin-top:1.75rem; background:var(--gold); color:var(--midnight); border:none; font-family:'Poppins',sans-serif; font-weight:700; padding:.7rem 2.25rem; border-radius:50px; }
+  .btn-certificate:hover{ background:var(--rose); }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:var(--midnight); color:var(--cream); text-align:center; padding:3rem 1rem; }
+  footer .script-font{ color:var(--gold); font-size:2rem; }
+
+  @media (max-width:576px){
+    #memoryCarousel .carousel-item img{ height:320px; }
+    .story-img{ margin-bottom:1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hearts + confetti overlays -->
+<div id="hearts-layer"></div>
+<div id="confetti-layer"></div>
+
+<!-- Floating utility buttons -->
+<button id="musicToggle" class="floating-btn" title="Play birthday song">🎵</button>
+<button id="confettiBtn" class="floating-btn" title="Tap for confetti">🎉</button>
+
+<!-- Background music — replace src with your own audio file -->
+<audio id="bgMusic" loop preload="none">
+  <source src="audio/birthday-song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow">A little surprise for</span>
+    <h1 class="hero-title">Happy Birthday Shruti</h1>
+    <p class="hero-sub">This website is made for you as a lil token of surprise on your birthday 🎁</p>
+  </div>
+  <div class="scroll-cue">⌄</div>
+</section>
+
+<!-- ================= GIFT MODAL ================= -->
+<div class="modal fade gift-modal" id="giftModal" tabindex="-1" aria-labelledby="giftModalLabel" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-0 justify-content-center">
+        <span class="gift-icon">🎉🎂🎉</span>
+      </div>
+      <div class="modal-body">
+        <h2 class="modal-title" id="giftModalLabel">Happy Birthday, <br>Shruti!</h2>
+        <p class="gift-message">
+          Wishing you a day as sweet, bright, and wonderful as you are.
+          May this year bring you endless laughter, new adventures, and every
+          little thing that makes you smile. Scroll down for a little trip
+          down memory lane, made just for you. 💛
+        </p>
+        <button type="button" class="btn btn-close-gift" data-bs-dismiss="modal">Open My Surprise</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= OUR STORY TIMELINE ================= -->
+<section class="story-timeline-section" id="our-story">
+  <div class="container text-center">
+    <span class="section-eyebrow">How it all started</span>
+    <h2 class="section-title">Our Story So Far</h2>
+    <p class="section-lead">From Youth Fest neither of us thought we'd survive, to a friendship that's outlasted every deadline since.</p>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">🎪</div>
+        <div class="timeline-year">Where it began</div>
+        <h4>Youth Fest</h4>
+        <p>We were just two people roped into managing a college festival together — total chaos, way too many last-minute problems, and somehow, we got it done.</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">🤝</div>
+        <div class="timeline-year">Right after</div>
+        <h4>Became Friends(Paad - The Start of story )</h4>
+        <p>Once the festival wrapped up, so did any excuse to not stay in touch. What started as "let's manage this event" quietly turned into an actual friendship.</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">🐾</div>
+        <div class="timeline-year">The chaos we called fun</div>
+        <h4>Fights, Fun & Everything In Between</h4>
+        <p>All those fights, the tickling and pinching, our cute little barter deals, and those tiny walks around college. Remember how we'd fight like two animals lying on the floor? And of course, that Avishkar night — somehow, all that chaos became some of my favorite memories.</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">💃</div>
+        <div class="timeline-year">Every season since</div>
+        <h4>Garba Nights</h4>
+        <p>The fun preparations at Purva's place, the grand Garba at Kharghar, clicking pictures at Kharghar station, and all those moments of me copying your Garba steps — I miss those days, the laughter, the madness, and how much fun we had together.</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">🌙</div>
+        <div class="timeline-year">One of many trips</div>
+        <h4>The Malvan Nights</h4>
+        <p>Those nights are unforgettable — seeing your beauty under the pure moonlight was something I could never put into words. Riding the scooty all the way to Devgad and back, those midnight walks after dinner, the horror stories, the laughter, and those few days together… memories I know I’ll never forget.</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">🥟</div>
+        <div class="timeline-year">The little moments</div>
+        <h4>Vashi Walks & Thane Momos</h4>
+        <p>I miss those walks in Vashi, the momos in Thane, the endless laughs, and all those little moments that somehow became some of my favorite memories with you.</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot">✨</div>
+        <div class="timeline-year">And counting</div>
+        <h4>Still Going Strong</h4>
+        <p>From festival duty to this website at 12am — here's to many more chapters we haven't written yet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MEMORY CAROUSEL (quick flashback) ================= -->
+<section class="memories-section" id="memories">
+  <div class="container text-center">
+    <span class="section-eyebrow">Flashback</span>
+    <h2 class="section-title">Little Moments We Cherish</h2>
+
+    <!-- Replace the image URLs below with your own photos of Shruti -->
+    <div id="memoryCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="1000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./assets/images/image (1).jpeg" alt="Memory 1">
+          <div class="carousel-caption"><p>Congratulations ✨</p></div>
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/images/image (74).jpeg" alt="Memory 2">
+          <div class="carousel-caption"><p>Random laughs, best memories 😂</p></div>
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/images/image (79).jpeg" alt="Memory 3">
+          <div class="carousel-caption"><p>The day everything just clicked 📸</p></div>
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/images/image (83).jpeg" alt="Memory 4">
+          <div class="carousel-caption"><p>Garba night energy 💃</p></div>
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/images/image (86).jpeg" alt="Memory 5">
+          <div class="carousel-caption"><p>Malvan sunsets 🌇</p></div>
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/images/image (87).jpeg" alt="Memory 6">
+          <div class="carousel-caption"><p>Here's to many more like this 🥂</p></div>
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/images/image (88).jpeg" alt="Memory 6">
+          <div class="carousel-caption"><p>Here's to many more like this 🥂</p></div>
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/images/image (89).jpeg" alt="Memory 6">
+          <div class="carousel-caption"><p>Here's to many more like this 🥂</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PHOTO WALL (full scrapbook) ================= -->
+<section class="photowall-section" id="photo-wall">
+  <div class="container">
+    <span class="section-eyebrow">The whole collection</span>
+    <h2 class="section-title">A Million Little Moments</h2>
+    <p class="section-lead mx-auto">We have way too many photos together to fit in one carousel — so here's a wall of them instead. Tap any photo to see it bigger.</p>
+
+    <!-- Add as many <img> tags here as you like — this is where your real photo dump goes -->
+    <div class="photowall-grid" id="photoWallGrid">
+      <img src="./assets/images/image (90).jpeg" alt="Photo memory">
+      <img src="./assets/images/image (101).jpeg" alt="Photo memory">
+      <img src="./assets/images/image (89).jpeg" alt="Photo memory">
+      <img src="./assets/images/image (105).jpeg" alt="Photo memory">
+      <img src="./assets/images/image (100).jpeg" alt="Photo memory">
+      <img src="./assets/images/image (58).jpeg" alt="Photo memory">
+      <img src="./assets/images/image (93).jpeg" alt="Photo memory">
+      <img src="./assets/images/image (81).jpeg" alt="Photo memory">
+      <img src="./assets/images/image (106).jpeg" alt="Photo memory">
+      <img src="./assets/images/image (88).jpeg" alt="Photo memory">
+      <img src="./assets/images/image (108).jpeg" alt="Photo memory">
+      <img src="./assets/images/image (104).jpeg" alt="Photo memory">
+      <img src="./assets/images/image (85).jpeg" alt="Photo memory">
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox for photo wall -->
+<div id="lightbox"><img id="lightboxImg" src="" alt="Full size memory"></div>
+
+<!-- ================= STORY / REASONS BLOCKS ================= -->
+<section class="story-block" id="story-1">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 order-2 order-lg-1 reveal">
+        <span class="section-eyebrow">Reason #1</span>
+        <h3 class="section-title mb-3">Your Smile Lights Up Every Room</h3>
+        <p class="story-text">There's something about the way you laugh that makes everyone around you laugh a little louder too. Today is all about celebrating that warmth — the kind that turns ordinary days into good ones, just because you're there.</p>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2 reveal">
+        <img src="./assets/images/image (97).jpeg" alt="Her smile" class="story-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story-block" id="story-2">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 order-2 order-lg-1 reveal">
+        <span class="section-eyebrow">Reason #2</span>
+        <h3 class="section-title mb-3">You Treat Everyone The Same</h3>
+        <p class="story-text">No matter who someone is or where they stand, you've always treated them with the same warmth and respect. That kind of quiet fairness is rare, and it's one of the things people notice about you first — and remember longest.</p>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2 reveal">
+        <img src="./assets/images/image (69).jpeg" alt="A cherished memory" class="story-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story-block" id="story-3">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 order-2 order-lg-1 reveal">
+        <span class="section-eyebrow">Reason #3</span>
+        <h3 class="section-title mb-3">The Best Daughter They Could Ask For</h3>
+        <p class="story-text">Ask your parents and they'll tell you — they couldn't have asked for a better daughter. The care you put into everything you do doesn't go unnoticed, at home or anywhere else.</p>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2 reveal">
+        <img src="./assets/images/image (84).jpeg" alt="Celebrating another year" class="story-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REASONS YOU'RE AMAZING GENERATOR ================= -->
+<section class="reasons-section" id="reasons">
+  <div class="container">
+    <span class="section-eyebrow">Just in case you forgot</span>
+    <h2 class="section-title">Reasons You're Amazing</h2>
+    <p class="section-lead mx-auto">Tap the button any time you need reminding. You'll run out of taps before we run out of reasons.</p>
+
+    <div class="reasons-card">
+      <p id="reasonText">Tap below for a reason you're amazing.</p>
+    </div>
+    <button class="btn-reason" id="reasonBtn">Give Me A Reason</button>
+  </div>
+</section>
+
+<!-- ================= WALL OF NOTES / LETTERS ================= -->
+<section class="notes-section" id="notes">
+  <div class="container">
+    <span class="section-eyebrow">From the people who love you</span>
+    <h2 class="section-title">A Little Wall Of Notes</h2>
+    <p class="section-lead mx-auto">Add more of these any time — from friends, family, anyone who wants to leave you a line.</p>
+
+    <div class="notes-grid">
+      <div class="note-card">
+        <p class="note-text">From the festival chaos to Malvan sunsets — I wouldn't trade a single bit of this friendship. Happy birthday!</p>
+        <p class="note-signature">— Me</p>
+      </div>
+      <div class="note-card">
+        <p class="note-text">We couldn't have asked for a better daughter. So proud of the person you've become.</p>
+        <p class="note-signature">— Mom &amp; Dad</p>
+      </div>
+      <div class="note-card">
+        <p class="note-text">You've never once made me feel like I mattered less than anyone else in the room. That's rare, and it's so you.</p>
+        <p class="note-signature">— A friend</p>
+      </div>
+      <div class="note-card">
+        <p class="note-text">Still waiting on last year's todo list, but hey, there's always this year. Love you anyway.</p>
+        <p class="note-signature">— Someone keeping count 😉</p>
+      </div>
+      <div class="note-card">
+        <p class="note-text">Garba nights just aren't the same without your terrible dandiya aim. Happy birthday, dance partner.</p>
+        <p class="note-signature">— Your garba crew</p>
+      </div>
+      <!-- Duplicate this note-card block to add more notes from other friends -->
+      <div class="note-card">
+        <p class="note-text">Add your own note here — replace this text with something you want to tell her.</p>
+        <p class="note-signature">— Your name</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= A POEM FOR HER ================= -->
+<section class="poem-section" id="poem">
+  <div class="container">
+    <span class="section-eyebrow">Because you love words</span>
+    <h2 class="section-title">A Poem, For You</h2>
+    <div class="poem-box" id="poemBox"></div>
+  </div>
+</section>
+
+<!-- ================= POEM MAD-LIB GENERATOR ================= -->
+<section class="madlib-section" id="madlib">
+  <div class="container">
+    <span class="section-eyebrow">Now it's your turn</span>
+    <h2 class="section-title">Write A Silly Poem With Us</h2>
+    <p class="section-lead mx-auto">You're the poet, not us — but fill these in anyway and see what happens.</p>
+
+    <form class="madlib-form" id="madlibForm">
+      <label for="mlPlace">A place we've traveled to</label>
+      <input type="text" class="form-control" id="mlPlace" placeholder="e.g. Malvan" required>
+
+      <label for="mlFeeling">A feeling</label>
+      <input type="text" class="form-control" id="mlFeeling" placeholder="e.g. golden" required>
+
+      <label for="mlThing">A random object</label>
+      <input type="text" class="form-control" id="mlThing" placeholder="e.g. dandiya stick" required>
+
+      <label for="mlAnimal">An animal</label>
+      <input type="text" class="form-control" id="mlAnimal" placeholder="e.g. butterfly" required>
+
+      <button type="submit" class="btn-madlib w-100">Generate My Poem</button>
+    </form>
+
+    <div id="madlibOutput"></div>
+  </div>
+</section>
+
+<!-- ================= TODO LIST JOKE WIDGET ================= -->
+<section class="todo-section" id="todo">
+  <div class="container">
+    <span class="section-eyebrow">We all know how this goes</span>
+    <h2 class="section-title">This Year's Todo List</h2>
+    <p class="section-lead mx-auto">You make one every year. Let's see how long this one lasts. No judgment — okay, maybe a little.</p>
+
+    <div class="todo-card">
+      <div class="todo-item"><input type="checkbox" id="t1"><label for="t1">Actually finish this year's todo list</label></div>
+      <div class="todo-item"><input type="checkbox" id="t2"><label for="t2">Finish 12 books this year</label></div>
+      <div class="todo-item"><input type="checkbox" id="t3"><label for="t3">Start the vision board (attempt #5)</label></div>
+      <div class="todo-item"><input type="checkbox" id="t4"><label for="t4">Write the poem you've been "planning" for months</label></div>
+      <div class="todo-item"><input type="checkbox" id="t4"><label for="t4">Sahil ko suit silwa ke pehen ke bhi dikhana hai!!</label></div>
+      <div class="todo-item"><input type="checkbox" id="t5"><label for="t5">Start home work out</label></div>
+      <div id="todoNote"></div>
+      <button class="btn-todo-reset" id="todoReset">Reset (like every August)</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CERTIFICATE ================= -->
+<section class="certificate-section" id="certificate">
+  <div class="container">
+    <span class="section-eyebrow">Official document</span>
+    <h2 class="section-title">Certificate Of Being Utterly Amazing</h2>
+    <p class="section-lead mx-auto">Legally binding in absolutely no court, but true everywhere else.</p>
+
+    <canvas id="certificateCanvas" width="900" height="600"></canvas><br>
+    <button class="btn-certificate" id="downloadCert">Download Certificate</button>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <p class="script-font mb-2">With love, always</p>
+  <p class="mb-0" style="opacity:.7; font-size:.9rem;">Made by Sahil just for you, Shruti</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  /* ================= HEARTS SHOWER ================= */
+  const heartsLayer = document.getElementById('hearts-layer');
+  const heartSymbols = ['💛','💖','💕','✨','💗'];
+
+  function spawnHeart(){
+    const heart = document.createElement('span');
+    heart.className = 'heart';
+    heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+    const startLeft = Math.random() * 100;
+    const drift = (Math.random() * 160 - 80) + 'px';
+    const duration = 4 + Math.random() * 3;
+    const size = 1 + Math.random() * 1.4;
+    heart.style.left = startLeft + 'vw';
+    heart.style.fontSize = size + 'rem';
+    heart.style.setProperty('--drift', drift);
+    heart.style.animationDuration = duration + 's';
+    heartsLayer.appendChild(heart);
+    setTimeout(() => heart.remove(), duration * 1000 + 200);
+  }
+
+  function heartBurst(count){
+    for (let i = 0; i < count; i++) setTimeout(spawnHeart, i * 60);
+  }
+
+  window.addEventListener('load', () => {
+    heartBurst(28);
+    setInterval(spawnHeart, 450);
+  });
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const giftModal = new bootstrap.Modal(document.getElementById('giftModal'));
+    giftModal.show();
+  });
+
+  /* ================= CONFETTI BURST ================= */
+  const confettiLayer = document.getElementById('confetti-layer');
+  const confettiColors = ['#ff6f91', '#f4c95d', '#fdf6ec', '#a86bd6', '#7be0c8'];
+
+  function spawnConfetti(){
+    const piece = document.createElement('span');
+    piece.className = 'confetti-piece';
+    piece.style.background = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+    piece.style.left = (Math.random() * 100) + 'vw';
+    piece.style.setProperty('--drift', (Math.random() * 200 - 100) + 'px');
+    const duration = 2.5 + Math.random() * 1.5;
+    piece.style.animationDuration = duration + 's';
+    confettiLayer.appendChild(piece);
+    setTimeout(() => piece.remove(), duration * 1000 + 200);
+  }
+
+  document.getElementById('confettiBtn').addEventListener('click', () => {
+    for (let i = 0; i < 60; i++) setTimeout(spawnConfetti, i * 12);
+  });
+
+  /* ================= MUSIC TOGGLE ================= */
+  const bgMusic = document.getElementById('bgMusic');
+  const musicBtn = document.getElementById('musicToggle');
+  let musicPlaying = false;
+
+  musicBtn.addEventListener('click', () => {
+    if (!musicPlaying){
+      bgMusic.play().catch(() => {
+        // No audio file found — add your own file at audio/birthday-song.mp3
+        console.log('Add a song file at audio/birthday-song.mp3 to enable music.');
+      });
+      musicBtn.textContent = '🔇';
+      musicPlaying = true;
+    } else {
+      bgMusic.pause();
+      musicBtn.textContent = '🎵';
+      musicPlaying = false;
+    }
+  });
+
+  /* ================= SCROLL REVEAL ================= */
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  /* ================= PHOTO WALL LIGHTBOX ================= */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+
+  document.querySelectorAll('#photoWallGrid img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightbox.classList.add('open');
+    });
+  });
+  lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+
+  /* ================= REASONS GENERATOR ================= */
+  const reasons = [
+    "You're the best daughter your parents could ever ask for.",
+    "You treat every single person with the same kindness, no exceptions.",
+    "You survived managing a college festival with me and still stayed friends. That's loyalty.",
+    "Your garba game is questionable, your energy is unmatched.",
+    "You make every trip — Malvan included — ten times more fun.",
+    "You write poems most people would never dare to write.",
+    "You make a todo list every single year. The ambition alone counts for something.",
+    "You remember details about people that they forget about themselves.",
+    "You've never made anyone feel small to make yourself feel big.",
+    "You turn ordinary hangouts into core memories.",
+    "You've been the same steady friend since that chaotic festival months.",
+    "You are, quite simply, the best girl anyone could know."
+  ];
+
+  let lastReason = -1;
+  const reasonText = document.getElementById('reasonText');
+  document.getElementById('reasonBtn').addEventListener('click', () => {
+    let next;
+    do { next = Math.floor(Math.random() * reasons.length); } while (next === lastReason);
+    lastReason = next;
+    reasonText.textContent = reasons[next];
+  });
+
+  /* ================= POEM TYPEWRITER ================= */
+  const poemLines = [
+    "From a festival we barely survived,",
+    "to garba nights we've kept alive —",
+    "through Malvan shores and city lights,",
+    "you've made the ordinary bright.",
+    "",
+    "So here's to you, on this, your day,",
+    "may joy find you in every way.",
+    "Happy birthday, my dear friend —",
+    "here's to stories with no end."
+  ];
+
+  const poemBox = document.getElementById('poemBox');
+  let poemTyped = false;
+
+  function typePoem(){
+    if (poemTyped) return;
+    poemTyped = true;
+    let lineIndex = 0;
+
+    function typeLine(){
+      if (lineIndex >= poemLines.length) return;
+      const lineEl = document.createElement('p');
+      lineEl.className = 'poem-line';
+      poemBox.appendChild(lineEl);
+      const text = poemLines[lineIndex];
+      let charIndex = 0;
+
+      function typeChar(){
+        if (charIndex <= text.length){
+          lineEl.textContent = text.slice(0, charIndex);
+          charIndex++;
+          setTimeout(typeChar, 28);
+        } else {
+          lineIndex++;
+          setTimeout(typeLine, 180);
+        }
+      }
+      typeChar();
+    }
+    typeLine();
+  }
+
+  const poemObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        typePoem();
+        poemObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  poemObserver.observe(poemBox);
+
+  /* ================= MAD-LIB GENERATOR ================= */
+  document.getElementById('madlibForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const place = document.getElementById('mlPlace').value.trim() || 'somewhere far';
+    const feeling = document.getElementById('mlFeeling').value.trim() || 'golden';
+    const thing = document.getElementById('mlThing').value.trim() || 'old photograph';
+    const animal = document.getElementById('mlAnimal').value.trim() || 'bird';
+
+    const output = document.getElementById('madlibOutput');
+    output.style.display = 'block';
+    output.innerHTML = `
+      <p>In ${place}, the air felt ${feeling},</p>
+      <p>we laughed till our sides could barely hold on.</p>
+      <p>I kept a ${thing} to remember it by,</p>
+      <p>and felt as free as a ${animal} in the sky.</p>
+      <p>Happy birthday — here's to more days like that one.</p>
+    `;
+    output.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  /* ================= TODO JOKE WIDGET ================= */
+  const todoNotes = [
+    "Ambitious as always 😏",
+    "Sure, this is the year.",
+    "We've heard this one before.",
+    "Manifesting it for you!",
+    "Bold of you to check that."
+  ];
+  const todoNoteEl = document.getElementById('todoNote');
+
+  document.querySelectorAll('.todo-item input').forEach(box => {
+    box.addEventListener('change', () => {
+      if (box.checked){
+        todoNoteEl.textContent = todoNotes[Math.floor(Math.random() * todoNotes.length)];
+      }
+    });
+  });
+
+  document.getElementById('todoReset').addEventListener('click', () => {
+    document.querySelectorAll('.todo-item input').forEach(box => box.checked = false);
+    todoNoteEl.textContent = 'Reset — just like every January.';
+  });
+
+  /* ================= CERTIFICATE (Canvas) ================= */
+  const canvas = document.getElementById('certificateCanvas');
+  const ctx = canvas.getContext('2d');
+
+  function drawCertificate(){
+    const w = canvas.width, h = canvas.height;
+
+    ctx.fillStyle = '#fdf6ec';
+    ctx.fillRect(0, 0, w, h);
+
+    ctx.strokeStyle = '#f4c95d';
+    ctx.lineWidth = 10;
+    ctx.strokeRect(20, 20, w - 40, h - 40);
+    ctx.strokeStyle = '#ff6f91';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(34, 34, w - 68, h - 68);
+
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#3a1f5d';
+    ctx.font = '20px Poppins, sans-serif';
+    ctx.fillText('CERTIFICATE OF', w / 2, 130);
+
+    ctx.font = '52px "Great Vibes", cursive';
+    ctx.fillStyle = '#ff6f91';
+    ctx.fillText('Being Utterly Amazing', w / 2, 190);
+
+    ctx.font = '18px Poppins, sans-serif';
+    ctx.fillStyle = '#5c4a6e';
+    ctx.fillText('This certifies that', w / 2, 260);
+
+    ctx.font = '64px "Great Vibes", cursive';
+    ctx.fillStyle = '#170f2b';
+    ctx.fillText('Shruti', w / 2, 340);
+
+    ctx.font = '16px Quicksand, sans-serif';
+    ctx.fillStyle = '#5c4a6e';
+    wrapText(ctx, 'is officially the best friend, the best daughter, and the most amazing person to know a person could ask for.', w / 2, 390, 600, 24);
+
+    ctx.font = '14px Poppins, sans-serif';
+    ctx.fillStyle = '#9a8aa8';
+    const today = new Date();
+    ctx.fillText('Awarded on ' + today.toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' }), w / 2, 520);
+
+    ctx.font = '22px "Great Vibes", cursive';
+    ctx.fillStyle = '#f4c95d';
+    ctx.fillText('— With love, always', w / 2, 560);
+  }
+
+  function wrapText(context, text, x, y, maxWidth, lineHeight){
+    const words = text.split(' ');
+    let line = '';
+    let lines = [];
+    for (let n = 0; n < words.length; n++){
+      const testLine = line + words[n] + ' ';
+      if (context.measureText(testLine).width > maxWidth && n > 0){
+        lines.push(line);
+        line = words[n] + ' ';
+      } else {
+        line = testLine;
+      }
+    }
+    lines.push(line);
+    lines.forEach((l, i) => context.fillText(l.trim(), x, y + i * lineHeight));
+  }
+
+  if (document.fonts && document.fonts.ready){
+    Promise.all([
+      document.fonts.load('52px "Great Vibes"'),
+      document.fonts.load('64px "Great Vibes"'),
+      document.fonts.load('20px Poppins'),
+      document.fonts.load('16px Quicksand')
+    ]).then(drawCertificate).catch(drawCertificate);
+  } else {
+    drawCertificate();
+  }
+
+  document.getElementById('downloadCert').addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.download = 'shruti-certificate-of-awesomeness.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  });
+</script>
+
+</body>
+</html>
